@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="item"
+            type="com.yklib.mqttsample.data.ChatDTO" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        >
+
+        <TextView
+            android:id="@+id/v_tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.name}"
+            android:textColor="#ff0000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/v_tvDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/v_tvContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="#0000ff"
+            android:text="@{item.contents}"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/v_tvName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/v_tvName"
+            app:layout_constraintTop_toTopOf="@+id/v_tvName" />
+
+        <TextView
+            android:id="@+id/v_tvDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.createTime}"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
