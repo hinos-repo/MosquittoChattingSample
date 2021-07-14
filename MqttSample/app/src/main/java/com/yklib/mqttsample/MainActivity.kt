@@ -1,5 +1,6 @@
 package com.yklib.mqttsample
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -20,11 +21,7 @@ class MainActivity : AppCompatActivity()
     private lateinit var binding : ActivityMainBinding
     private lateinit var viewModel: MainViewModel
 
-    private val adtChatList : ChatAdapter by lazy {
-        ChatAdapter(arrChat)
-    }
-
-    private val arrChat = mutableListOf<ChatDTO>()
+    private var adtChatList : ChatAdapter = ChatAdapter(mutableListOf())
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -45,15 +42,17 @@ class MainActivity : AppCompatActivity()
                         System.currentTimeMillis().toString()
                     )
                 )
+                vEtInput.text.clear()
             }
+            vEtName.setText(Build.MODEL)
         }
         initObserve()
     }
 
     private fun initObserve()
     {
-        viewModel.newChatData.observe(this, {
-            adtChatList.addData(it)
+        viewModel.arrChatData.observe(this, {
+            adtChatList.changeAllData(it)
             binding.vRecyclerView.scrollToPosition(adtChatList.itemCount-1)
         })
     }

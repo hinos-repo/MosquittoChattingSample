@@ -6,10 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.yklib.mqttsample.MainViewModel
 import java.lang.IllegalArgumentException
 
-class ViewModelFactory(
-        private val application: Application,
-
-) : ViewModelProvider.Factory
+class ViewModelFactory(private val application: Application) : ViewModelProvider.Factory
 {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T
     {
